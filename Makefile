@@ -172,9 +172,10 @@ CLEANUPS += $(COBJECTS)
 CLEANUPS += $(OBJECTS)
 CLEANUPS += $(LIBSASS_LIB)
 
+#### First Task is taken as the default task
 all: $(BUILD)
-
-debug: $(BUILD)
+#If debug task is called, the files must be compiled with debug symbols
+debug: debug-$(BUILD)
 
 debug-static: LDFLAGS := -g $(filter-out -O2,$(LDFLAGS))
 debug-static: CFLAGS := -g -DDEBUG -DDEBUG_LVL="$(DEBUG_LVL)" $(filter-out -O2,$(CFLAGS))
